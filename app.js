@@ -24,26 +24,15 @@ menu_item.forEach((item) => {
 	});
 });
 
-function sendEmail() {
-	var parametros = {
-		nombre: document.getElementById("nombre").value,
-		correo: document.getElementById("e-mail").value,
-		mensaje: document.getElementById("message").value,
-	};
-
-
-	const serviceID = "service_p2xo77a";
-	const templateID = "template_jc7bgdm";
-
-	emailjs
-		.send(serviceID, templateID, parametros)
-		.then(
-			res => {
-				document.getElementById("nombre").value = "";
-				document.getElementById("e-mail").value = "";
-				document.getElementById("message").value = "";
-				console.log(res);
-				alert("Su mensaje fue enviado correctamente")
-			})
-		.catch((err) => console.log(err));
+function SendMail() {
+  var parametros = {
+    nombre: document.getElementById("nombre").value,
+    email: document.getElementById("email").value,
+    mensaje: document.getElementById("mensaje").value,
+  };
+  emailjs
+    .send("service_p2xo77a", "template_jc7bgdm", parametros)
+    .then(function (res) {
+      alert("Enviado!" + res.status);
+    });
 }
